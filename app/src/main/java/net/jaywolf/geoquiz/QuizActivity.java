@@ -23,11 +23,14 @@ public class QuizActivity extends AppCompatActivity {
     // define tag (label) for activity's log
     public static final String TAG = "QuizActivity";
 
+    // define persistent storage variable
+    private static final String KEY_INDEX = "index";
+
     // define member (instance) variables (these are the widgets we will be interacting with);
     private Button mTrueButton;
     private Button mFalseButton;
-    private ImageButton mNextButton;
-    private ImageButton mPreviousButton;
+    private Button mNextButton;
+    private Button mPreviousButton;
     private TextView mQuestionTextView;
     // 'm' prefix on member variables = std Android naming convention;
     // used for Android Studio's auto-generation feature
@@ -119,6 +122,13 @@ public class QuizActivity extends AppCompatActivity {
                 nextQuestion();
             }
         });
+
+        // check saved instance state for value from a previous instance of the activity
+        // if it exists, assign it to mCurrentIndex
+        if (savedInstanceState != null) {
+            mCurrentIndex = savedInstanceState.getInt(KEY_INDEX, 0);
+        }
+
         // get question text from the QuestionBank array to display
         updateQuestion();
 
@@ -158,7 +168,7 @@ public class QuizActivity extends AppCompatActivity {
         });
 
         // add functionality for [Next] button
-        mNextButton = (ImageButton) findViewById(R.id.next_button);
+        mNextButton = (Button) findViewById(R.id.next_button);
         mNextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -167,7 +177,7 @@ public class QuizActivity extends AppCompatActivity {
         });
 
         // add [Previous] button
-        mPreviousButton = (ImageButton) findViewById(R.id.previous_button);
+        mPreviousButton = (Button) findViewById(R.id.previous_button);
         mPreviousButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -175,6 +185,14 @@ public class QuizActivity extends AppCompatActivity {
                 updateQuestion();
             }
         });
+    }
+
+    // write current index value (mCurrentIndex) to persistent storage
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        Log.i(TAG, "onSaveInstanceState");
+        savedInstanceState.putInt(KEY_INDEX, mCurrentIndex);
     }
 
     // add logging methods for each lifecycle activity
