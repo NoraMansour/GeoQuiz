@@ -1,9 +1,11 @@
 package net.jaywolf.geoquiz;
 
+import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,8 +22,8 @@ public class QuizActivity extends AppCompatActivity {
     // define member (instance) variables (these are the widgets we will be interacting with);
     private Button mTrueButton;
     private Button mFalseButton;
-    private Button mNextButton;
-    private Button mPreviousButton;
+    private ImageButton mNextButton;
+    private ImageButton mPreviousButton;
     private TextView mQuestionTextView;
     // 'm' prefix on member variables = std Android naming convention;
     // used for Android Studio's auto-generation feature
@@ -143,7 +145,7 @@ public class QuizActivity extends AppCompatActivity {
         });
 
         // add functionality for [Next] button
-        mNextButton = (Button) findViewById(R.id.next_button);
+        mNextButton = (ImageButton) findViewById(R.id.next_button);
         mNextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -152,7 +154,7 @@ public class QuizActivity extends AppCompatActivity {
         });
 
         // add [Previous] button
-        mPreviousButton = (Button) findViewById(R.id.previous_button);
+        mPreviousButton = (ImageButton) findViewById(R.id.previous_button);
         mPreviousButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
