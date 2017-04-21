@@ -9,4 +9,6 @@ The code is heavily commented with details from the book as well as notes about 
 
 Chapter 2 branch includes updates from the challenge exercises at the end of chapter 2 as well as a small method to move to the next question not suggested in the text.
 
-Chapter 3 branch uses the code from the challenge excercises from Chapter 2 instead of the exact example from the book.
+Chapter 3 branch uses some code from the challenge exercises from Chapter 2 instead of the exact examples from the book.
+
+Chapter 4 covers debugging and does no have any code to contribute.
