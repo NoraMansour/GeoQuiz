@@ -58,6 +58,12 @@ public class QuizActivity extends AppCompatActivity {
         Toast.makeText(this, messageResID, Toast.LENGTH_SHORT).show();
     }
 
+    // function to display the next question in the mQuestionBank array
+    private void nextQuestion() {
+        mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.length;
+        updateQuestion();
+    }
+
     @Override
     // @Override asks the compiler to ensure that the class actually has the method that we are
     // attempting to override; throws an error if the method does not exist.
@@ -90,6 +96,13 @@ public class QuizActivity extends AppCompatActivity {
         mQuestionTextView = (TextView) findViewById(R.id.question_text_view);
         // gets the resource ID for the for the question text view widget
 
+        // make mQuestionTextView clickable
+        mQuestionTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                nextQuestion();
+            }
+        });
         // get question text from the QuestionBank array to display
         updateQuestion();
 
@@ -133,8 +146,7 @@ public class QuizActivity extends AppCompatActivity {
         mNextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.length;
-                updateQuestion();
+                nextQuestion();
             }
         });
 
