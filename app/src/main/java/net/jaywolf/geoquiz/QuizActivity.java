@@ -21,6 +21,7 @@ public class QuizActivity extends AppCompatActivity {
     private Button mTrueButton;
     private Button mFalseButton;
     private Button mNextButton;
+    private Button mPreviousButton;
     private TextView mQuestionTextView;
     // 'm' prefix on member variables = std Android naming convention;
     // used for Android Studio's auto-generation feature
@@ -150,5 +151,14 @@ public class QuizActivity extends AppCompatActivity {
             }
         });
 
+        // add [Previous] button
+        mPreviousButton = (Button) findViewById(R.id.previous_button);
+        mPreviousButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mCurrentIndex = (mCurrentIndex + mQuestionBank.length - 1) % mQuestionBank.length;
+                updateQuestion();
+            }
+        });
     }
 }
