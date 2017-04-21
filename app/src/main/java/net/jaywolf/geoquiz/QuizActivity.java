@@ -3,6 +3,7 @@ package net.jaywolf.geoquiz;
 import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -18,6 +19,9 @@ import android.widget.Toast;
 public class QuizActivity extends AppCompatActivity {
 // QuizActivity manages all layout elements and interactions for the specific activity.
 // AppCompatActivity provides compatibility support for older versions of Android.
+
+    // define tag (label) for activity's log
+    public static final String TAG = "QuizActivity";
 
     // define member (instance) variables (these are the widgets we will be interacting with);
     private Button mTrueButton;
@@ -81,6 +85,15 @@ public class QuizActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         // must call superclass of onCreate() (and each other lifecycle stage) before doing anything
         // else b/c we are overriding the superclass' implementation with our own
+
+        // add log message to the debugging log
+        Log.d(TAG, "onCreate(Bundle) called");
+        /* Log.d is an implementation of `public static int d(String tag, String msg)`
+         * d = "debug" level of logging; can be filtered out
+         * e = errors
+         * w = warnings
+         * i = informational messages
+         * v = verbose logging (for development purposes only!) */
 
         /* View (layout) objects know how to draw themselves on the screen and how to respond to
          * user input, like touches. Essentially, if you can see it on the screen, it is probably a
@@ -162,5 +175,36 @@ public class QuizActivity extends AppCompatActivity {
                 updateQuestion();
             }
         });
+    }
+
+    // add logging methods for each lifecycle activity
+    @Override
+    public void onStart() {
+        super.onStart();
+        Log.d(TAG, "onStart() called");
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        Log.d(TAG, "onPause() called");
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.d(TAG, "onResume() called");
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        Log.d(TAG, "onStop() called");
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Log.d(TAG, "onDestroy() called");
     }
 }
