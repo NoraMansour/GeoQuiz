@@ -11,4 +11,4 @@ Chapter 2 branch includes updates from the challenge exercises at the end of cha
 
 Chapter 3 branch uses some code from the challenge exercises from Chapter 2 instead of the exact examples from the book.
 
-Chapter 4 covers debugging and does no have any code to contribute.
+Chapter 4 covers debugging and does not have any code to contribute.

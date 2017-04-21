@@ -66,6 +66,13 @@ public class QuizActivity extends AppCompatActivity {
             messageResID = R.string.incorrect_toast;
         }
         Toast.makeText(this, messageResID, Toast.LENGTH_SHORT).show();
+        /* Toasts = pop-up messages that appear on the screen for a defined time and don't require
+         * any interaction; method of the Toast class;
+         * Format: makeText(Context context, int resID, int duration);
+         * - Context = instance of Activity; Activity = subclass of Context;
+         * - used to find text string's resource ID;
+         * - Context in this case is QuizActivity, and "this" refers to View.OnClickListener
+         *   in the anonymous inner class we are defining */
     }
 
     // function to display the next question in the mQuestionBank array
@@ -150,14 +157,6 @@ public class QuizActivity extends AppCompatActivity {
          * to the listener; OnClickListener class only has one method, onClick(View); can be empty
          * b/c compiler only requires method is implemented but doesn't care how */
 
-        /* Toasts = pop-up messages that appear on the screen for a defined time and don't require
-         * any interaction; method of the Toast class;
-         * Format: makeText(Context context, int resID, int duration);
-         * - Context = instance of Activity; Activity = subclass of Context;
-         * - used to find text string's resource ID;
-         * - Context in this case is QuizActivity, and "this" refers to View.OnClickListener
-         *   in the anonymous inner class we are defining */
-
         // functionality for [False] button
         mFalseButton = (Button) findViewById(R.id.false_button);
         mFalseButton.setOnClickListener(new View.OnClickListener() {
@@ -167,7 +166,7 @@ public class QuizActivity extends AppCompatActivity {
             }
         });
 
-        // add functionality for [Next] button
+        // functionality for [Next] button
         mNextButton = (Button) findViewById(R.id.next_button);
         mNextButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -176,7 +175,7 @@ public class QuizActivity extends AppCompatActivity {
             }
         });
 
-        // add [Previous] button
+        // functionality for [Previous] button
         mPreviousButton = (Button) findViewById(R.id.previous_button);
         mPreviousButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -195,7 +194,7 @@ public class QuizActivity extends AppCompatActivity {
         savedInstanceState.putInt(KEY_INDEX, mCurrentIndex);
     }
 
-    // add logging methods for each lifecycle activity
+    // logging methods for each lifecycle activity
     @Override
     public void onStart() {
         super.onStart();
